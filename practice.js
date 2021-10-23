@@ -6,7 +6,12 @@ let todoList = document.getElementById('to-do-list');
 
 const create = () => {
   if (input.value) {
-      items.unshift(input.value);
+      listItem = {
+          text: `${input.value}`,
+          id: Math.floor(Math.random()*100000000),
+          done: false
+      }
+      items.unshift(listItem);
       input.value = '';
   } else {
     alert("Please write something!");
@@ -19,7 +24,7 @@ const read = () => {
     items.forEach(item => {
         let li = document.createElement('li');
         todoList.appendChild(li);
-       li.innerHTML = `${item}`
+       li.innerHTML = `${item.text}`
    })
 
 }
