@@ -12,3 +12,7 @@ body {
 span {
   padding: 0 20px;
 }
+
+.save {
+  display: none;
+}

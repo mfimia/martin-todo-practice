@@ -10,6 +10,7 @@ const create = () => {
       id: Math.floor(Math.random() * 100000000),
       done: false,
       deleted: false,
+      editing: false,
     };
     items.unshift(listItem);
     input.value = "";
@@ -64,14 +65,21 @@ const read = () => {
     if (item.deleted) {
       li.setAttribute("style", "display: none");
     }
+    // if (item.editing) {
+    //   let deleteButton = document.getElementById(`delete-${item.id}`);
+    //   deleteButton.style.display = 'none';
+    //   let saveButton = document.getElementById(`save-${item.id}`);
+    //   saveButton.style.display = 'inline';
+    // }
+
     li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">
       Done
     </button>
-    <input type="text" value="${item.text}" id="text-${item.id}" onclick="displaySave()">
+    <input type="text" value="${item.text}" id="text-${item.id}" onclick="displaySave(${item.id})">
     <button type="button" onclick="remove(${item.id})" id="delete-${item.id}">
       Delete
     </button>
-    <button type="button" onclick="save(${item.id})" id="save-${item.id}">
+    <button type="button" class="save" onclick="save(${item.id})" id="save-${item.id}">
       Save
     </button>`;
   });
@@ -97,13 +105,33 @@ const done = (idNum) => {
   });
 };
 
-const displaySave = () => {
-  
-}
+const displaySave = (idNum) => {
+  let textContainer = document.getElementById(`text-${idNum}`);
+  let saveButton = document.getElementById(`save-${idNum}`);
+  saveButton.style.display = "inline";
+  let deleteButton = document.getElementById(`delete-${idNum}`);
+  deleteButton.style.display = "none";
+  saveButton.addEventListener("click", () => {
+    if (textContainer.value) {
+      save(textContainer.value, idNum);
+    } else {
+      alert("Please write something!");
+    }
+  });
+  textContainer.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      if (textContainer.value) {
+        save(textContainer.value, idNum);
+      } else {
+        alert("Please write something!");
+      }
+    }
+  });
+};
 
-const save = () => {
-  
-}
+const save = (text, idNum) => {
+  console.log(text, idNum);
+};
 
 // Add event listeners
 addButton.addEventListener("click", create);
