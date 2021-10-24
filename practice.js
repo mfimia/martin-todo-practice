@@ -111,7 +111,7 @@ const displaySave = (idNum) => {
   saveButton.style.display = "inline";
   let deleteButton = document.getElementById(`delete-${idNum}`);
   deleteButton.style.display = "none";
-  saveButton.addEventListener("click", () => {
+  saveButton.addEventListener("mousedown", () => {
     if (textContainer.value) {
       save(textContainer.value, idNum);
     } else {
@@ -122,6 +122,7 @@ const displaySave = (idNum) => {
     if (event.key === "Enter") {
       if (textContainer.value) {
         save(textContainer.value, idNum);
+        textContainer.blur();
       } else {
         alert("Please write something!");
       }
@@ -133,13 +134,19 @@ const displaySave = (idNum) => {
     let originalText = items.filter((i) => {
       return i.id === idNum;
   })
-    console.log(originalText[0].text)
     textContainer.value = originalText[0].text;
 });
 }
 
 const save = (text, idNum) => {
-  console.log(text, idNum);
+  let saveButton = document.getElementById(`save-${idNum}`);
+  let deleteButton = document.getElementById(`delete-${idNum}`);
+  saveButton.style.display = "none";
+  deleteButton.style.display = "inline";
+  let savedItem = items.filter((i) => {
+    return i.id === idNum;
+})
+  savedItem[0].text = text;
 };
 
 // Add event listeners
