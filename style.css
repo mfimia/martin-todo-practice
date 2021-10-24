@@ -1,45 +1,13 @@
-/*
-* {
-  border: 1px solid red;
-}
-
+/* Browser window size optimized for console view in second screen */
 body {
-  font-family: sans-serif;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-}
-
-h1 {
-  font-family: "Rock Salt", cursive;
-  text-align: center;
-}
-
-#addContent {
-  margin: 0 auto;
-  width: 550px;
-}
-
-li {
-  display: flex;
-  line-height: 3em;
-  align-items: center;
   width: 50%;
-}
-
-#textContainer {
-  padding: 0 32px 0 32px;
-  width: 200px;
-  max-width: 200px;
-}
-
-.delete-button {
-  position: absolute;
-  right: 12%;
+  display: flex;
+  justify-content: center;
+  font-family: 'consolas';
+  background-color: rgb(13,17,23);
+  color: white;
 }
 
 span {
+  padding: 0 20px;
 }
