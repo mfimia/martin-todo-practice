@@ -31,13 +31,28 @@ const remove = (idNum) => {
     if (item.deleted) {
       let li = document.getElementById(`${item.id}`);
       li.style.display = "none";
-      // items.pop(item);
     } else {
       let li = document.getElementById(`${item.id}`);
       li.style.display = "";
     }
   });
 };
+
+const clearAll = () => {
+  items.forEach(item => {
+    if (item.done) {
+      item.deleted = true;
+    }
+    if (item.deleted) {
+      let li = document.getElementById(`${item.id}`);
+      li.style.display = "none";
+    } else {
+      let li = document.getElementById(`${item.id}`);
+      li.style.display = "";
+    }
+  })
+
+}
 
 const read = () => {
   todoList.innerHTML = "";
