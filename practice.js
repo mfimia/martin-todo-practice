@@ -23,7 +23,6 @@ const remove = (idNum) => {
   let removedItem = items.filter((i) => {
     return i.id === idNum;
   });
-
   if (removedItem[0].id === idNum) {
     removedItem[0].deleted = !removedItem[0].deleted;
   }
@@ -39,7 +38,7 @@ const remove = (idNum) => {
 };
 
 const clearAll = () => {
-  items.forEach(item => {
+  items.forEach((item) => {
     if (item.done) {
       item.deleted = true;
     }
@@ -50,9 +49,8 @@ const clearAll = () => {
       let li = document.getElementById(`${item.id}`);
       li.style.display = "";
     }
-  })
-
-}
+  });
+};
 
 const read = () => {
   todoList.innerHTML = "";
@@ -66,7 +64,16 @@ const read = () => {
     if (item.deleted) {
       li.setAttribute("style", "display: none");
     }
-    li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">Done</button><span id="text-${item.id}">${item.text}</span><button type="button" onclick="remove(${item.id})" id="delete-${item.id}">Delete</button>`;
+    li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">
+      Done
+    </button>
+    <input type="text" value="${item.text}" id="text-${item.id}" onclick="displaySave()">
+    <button type="button" onclick="remove(${item.id})" id="delete-${item.id}">
+      Delete
+    </button>
+    <button type="button" onclick="save(${item.id})" id="save-${item.id}">
+      Save
+    </button>`;
   });
 };
 
@@ -89,6 +96,14 @@ const done = (idNum) => {
     }
   });
 };
+
+const displaySave = () => {
+  
+}
+
+const save = () => {
+  
+}
 
 // Add event listeners
 addButton.addEventListener("click", create);
