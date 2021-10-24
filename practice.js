@@ -42,19 +42,20 @@ const remove = (idNum) => {
 const read = () => {
   todoList.innerHTML = "";
   items.forEach((item) => {
-    if (!item.deleted) {
-      let li = document.createElement("li");
-      todoList.appendChild(li);
-      li.setAttribute("id", `${item.id}`);
-      if (item.done) {
-        li.setAttribute('style', 'color: green');
-      }
-      li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">Done</button><span id="text-${item.id}">${item.text}</span><button type="button" onclick="remove(${item.id})" id="delete-${item.id}">Delete</button>`;
+    let li = document.createElement("li");
+    todoList.appendChild(li);
+    li.setAttribute("id", `${item.id}`);
+    if (item.done) {
+      li.setAttribute("style", "color: green");
     }
+    if (item.deleted) {
+      li.setAttribute("style", "display: none");
+    }
+    li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">Done</button><span id="text-${item.id}">${item.text}</span><button type="button" onclick="remove(${item.id})" id="delete-${item.id}">Delete</button>`;
   });
 };
 
-// Function triggered when clicking 'done'. 
+// Function triggered when clicking 'done'.
 // Selects object in array based on id and changes their style property in DOM
 const done = (idNum) => {
   let doneItem = items.filter((i) => {
