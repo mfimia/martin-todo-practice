@@ -16,3 +16,8 @@ span {
 .save {
   display: none;
 }
+
+.done > input, .done [id*='done'] {
+  background-color: grey;
+  text-decoration: line-through;
+}

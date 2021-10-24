@@ -61,6 +61,7 @@ const read = () => {
     li.setAttribute("id", `${item.id}`);
     if (item.done) {
       li.setAttribute("style", "color: green");
+      li.setAttribute('class', 'done');
     }
     if (item.deleted) {
       li.setAttribute("style", "display: none");
@@ -94,15 +95,7 @@ const done = (idNum) => {
   if (doneItem[0].id === idNum) {
     doneItem[0].done = !doneItem[0].done;
   }
-  items.forEach((item) => {
-    if (item.done && !item.deleted) {
-      let li = document.getElementById(`${item.id}`);
-      li.style.color = "green";
-    } else if (!item.deleted) {
-      let li = document.getElementById(`${item.id}`);
-      li.style.color = "";
-    }
-  });
+  read();
 };
 
 const displaySave = (idNum) => {
