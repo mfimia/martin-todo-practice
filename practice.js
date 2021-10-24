@@ -127,7 +127,16 @@ const displaySave = (idNum) => {
       }
     }
   });
-};
+  textContainer.addEventListener('focusout', () => {
+    saveButton.style.display = 'none';
+    deleteButton.style.display = 'inline';
+    let originalText = items.filter((i) => {
+      return i.id === idNum;
+  })
+    console.log(originalText[0].text)
+    textContainer.value = originalText[0].text;
+});
+}
 
 const save = (text, idNum) => {
   console.log(text, idNum);
