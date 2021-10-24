@@ -61,18 +61,11 @@ const read = () => {
     li.setAttribute("id", `${item.id}`);
     if (item.done) {
       li.setAttribute("style", "color: green");
-      li.setAttribute('class', 'done');
+      li.setAttribute("class", "done");
     }
     if (item.deleted) {
       li.setAttribute("style", "display: none");
     }
-    // if (item.editing) {
-    //   let deleteButton = document.getElementById(`delete-${item.id}`);
-    //   deleteButton.style.display = 'none';
-    //   let saveButton = document.getElementById(`save-${item.id}`);
-    //   saveButton.style.display = 'inline';
-    // }
-
     li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">
       Done
     </button>

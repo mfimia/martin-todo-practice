@@ -6,7 +6,7 @@ const addAValue = () => {
     const listObject = {
       todoText: `${userInput}`,
       todoId: Math.floor(Math.random() * 1000000),
-      actionStatus: false
+      actionStatus: false,
     };
     toDoList.unshift(listObject);
     localStorage.setItem(`${listObject.todoText}`, `${userInput}`);

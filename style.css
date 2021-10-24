@@ -4,8 +4,8 @@ body {
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  font-family: 'consolas';
-  background-color: rgb(13,17,23);
+  font-family: "consolas";
+  background-color: rgb(13, 17, 23);
   color: white;
 }
 
@@ -17,7 +17,8 @@ span {
   display: none;
 }
 
-.done > input, .done [id*='done'] {
+.done > input,
+.done [id*="done"] {
   background-color: grey;
   text-decoration: line-through;
 }
