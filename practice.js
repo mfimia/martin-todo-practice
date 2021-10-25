@@ -1,8 +1,8 @@
-let items = [];
-let addButton = document.getElementById("add");
-let input = document.getElementById("input-text");
-let todoList = document.getElementById("to-do-list");
-let doneList = document.getElementById('done-list');
+const items = [];
+const addButton = document.getElementById("add");
+const input = document.getElementById("input-text");
+const todoList = document.getElementById("to-do-list");
+const doneList = document.getElementById('done-list');
 
 const create = () => {
   if (input.value) {
@@ -23,7 +23,7 @@ const create = () => {
 };
 
 const remove = (idNum) => {
-  let removedItem = items.filter((i) => {
+  const removedItem = items.filter((i) => {
     return i.id === idNum;
   });
   if (removedItem[0].id === idNum) {
@@ -31,10 +31,10 @@ const remove = (idNum) => {
   }
   items.forEach((item) => {
     if (item.deleted) {
-      let li = document.getElementById(`${item.id}`);
+      const li = document.getElementById(`${item.id}`);
       li.style.display = "none";
     } else {
-      let li = document.getElementById(`${item.id}`);
+      const li = document.getElementById(`${item.id}`);
       li.style.display = "";
     }
   });
@@ -46,10 +46,10 @@ const clearAll = () => {
       item.deleted = true;
     }
     if (item.deleted) {
-      let li = document.getElementById(`${item.id}`);
+      const li = document.getElementById(`${item.id}`);
       li.style.display = "none";
     } else {
-      let li = document.getElementById(`${item.id}`);
+      const li = document.getElementById(`${item.id}`);
       li.style.display = "";
     }
   });
@@ -59,7 +59,7 @@ const read = () => {
   todoList.innerHTML = "";
   items.forEach((item) => {
     if(!item.done) {
-    let li = document.createElement("li");
+    const li = document.createElement("li");
     todoList.appendChild(li);
     li.setAttribute("id", `${item.id}`);
     // if (item.done) {
@@ -87,7 +87,7 @@ const readDone = () => {
   doneList.innerHTML = '';
   items.forEach((item) => {
     if (item.done) {
-      let li = document.createElement("li");
+      const li = document.createElement("li");
     doneList.appendChild(li);
     li.setAttribute("id", `${item.id}`);
     if (item.done) {
@@ -114,7 +114,7 @@ const readDone = () => {
 // Function triggered when clicking 'done'.
 // Selects object in array based on id and changes their style property in DOM
 const done = (idNum) => {
-  let doneItem = items.filter((i) => {
+  const doneItem = items.filter((i) => {
     return i.id === idNum;
   });
   if (doneItem[0].id === idNum) {
@@ -125,10 +125,10 @@ const done = (idNum) => {
 };
 
 const displaySave = (idNum) => {
-  let textContainer = document.getElementById(`text-${idNum}`);
-  let saveButton = document.getElementById(`save-${idNum}`);
+  const textContainer = document.getElementById(`text-${idNum}`);
+  const saveButton = document.getElementById(`save-${idNum}`);
   saveButton.style.display = "inline";
-  let deleteButton = document.getElementById(`delete-${idNum}`);
+  const deleteButton = document.getElementById(`delete-${idNum}`);
   deleteButton.style.display = "none";
   saveButton.addEventListener("mousedown", () => {
     if (textContainer.value) {
@@ -150,7 +150,7 @@ const displaySave = (idNum) => {
   textContainer.addEventListener("focusout", () => {
     saveButton.style.display = "none";
     deleteButton.style.display = "inline";
-    let originalText = items.filter((i) => {
+    const originalText = items.filter((i) => {
       return i.id === idNum;
     });
     textContainer.value = originalText[0].text;
@@ -158,11 +158,11 @@ const displaySave = (idNum) => {
 };
 
 const save = (text, idNum) => {
-  let saveButton = document.getElementById(`save-${idNum}`);
-  let deleteButton = document.getElementById(`delete-${idNum}`);
+  const saveButton = document.getElementById(`save-${idNum}`);
+  const deleteButton = document.getElementById(`delete-${idNum}`);
   saveButton.style.display = "none";
   deleteButton.style.display = "inline";
-  let savedItem = items.filter((i) => {
+  const savedItem = items.filter((i) => {
     return i.id === idNum;
   });
   savedItem[0].text = text;
