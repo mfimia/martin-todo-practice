@@ -2,7 +2,7 @@ const items = [];
 const addButton = document.getElementById("add");
 const input = document.getElementById("input-text");
 const todoList = document.getElementById("to-do-list");
-const doneList = document.getElementById('done-list');
+const doneList = document.getElementById("done-list");
 
 const create = () => {
   if (input.value) {
@@ -58,18 +58,14 @@ const clearAll = () => {
 const read = () => {
   todoList.innerHTML = "";
   items.forEach((item) => {
-    if(!item.done) {
-    const li = document.createElement("li");
-    todoList.appendChild(li);
-    li.setAttribute("id", `${item.id}`);
-    // if (item.done) {
-    //   li.setAttribute("style", "color: green");
-    //   li.setAttribute("class", "done");
-    // }
-    if (item.deleted) {
-      li.setAttribute("style", "display: none");
-    }
-    li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">
+    if (!item.done) {
+      const li = document.createElement("li");
+      todoList.appendChild(li);
+      li.setAttribute("id", `${item.id}`);
+      if (item.deleted) {
+        li.setAttribute("style", "display: none");
+      }
+      li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">
       Done
     </button>
     <input type="text" value="${item.text}" id="text-${item.id}" onclick="displaySave(${item.id})">
@@ -84,20 +80,19 @@ const read = () => {
 };
 
 const readDone = () => {
-  doneList.innerHTML = '';
+  doneList.innerHTML = "";
   items.forEach((item) => {
     if (item.done) {
       const li = document.createElement("li");
-    doneList.appendChild(li);
-    li.setAttribute("id", `${item.id}`);
-    if (item.done) {
-      li.setAttribute("style", "color: green");
-      li.setAttribute("class", "done");
-    }
-    if (item.deleted) {
-      li.setAttribute("style", "display: none");
-    }
-    li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">
+      doneList.appendChild(li);
+      li.setAttribute("id", `${item.id}`);
+      if (item.done) {
+        li.setAttribute("class", "done");
+      }
+      if (item.deleted) {
+        li.setAttribute("style", "display: none");
+      }
+      li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">
       Done
     </button>
     <input type="text" value="${item.text}" id="text-${item.id}" onclick="displaySave(${item.id})">
@@ -108,8 +103,8 @@ const readDone = () => {
       Save
     </button>`;
     }
-  })
-}
+  });
+};
 
 // Function triggered when clicking 'done'.
 // Selects object in array based on id and changes their style property in DOM
