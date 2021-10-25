@@ -2,6 +2,7 @@ let items = [];
 let addButton = document.getElementById("add");
 let input = document.getElementById("input-text");
 let todoList = document.getElementById("to-do-list");
+let doneList = document.getElementById('done-list');
 
 const create = () => {
   if (input.value) {
@@ -18,6 +19,7 @@ const create = () => {
     alert("Please write something!");
   }
   read();
+  readDone();
 };
 
 const remove = (idNum) => {
@@ -56,8 +58,37 @@ const clearAll = () => {
 const read = () => {
   todoList.innerHTML = "";
   items.forEach((item) => {
+    if(!item.done) {
     let li = document.createElement("li");
     todoList.appendChild(li);
+    li.setAttribute("id", `${item.id}`);
+    // if (item.done) {
+    //   li.setAttribute("style", "color: green");
+    //   li.setAttribute("class", "done");
+    // }
+    if (item.deleted) {
+      li.setAttribute("style", "display: none");
+    }
+    li.innerHTML = `<button type="button" onclick="done(${item.id})" id="done-${item.id}">
+      Done
+    </button>
+    <input type="text" value="${item.text}" id="text-${item.id}" onclick="displaySave(${item.id})">
+    <button type="button" onclick="remove(${item.id})" id="delete-${item.id}">
+      Delete
+    </button>
+    <button type="button" class="save" onclick="save(${item.id})" id="save-${item.id}">
+      Save
+    </button>`;
+    }
+  });
+};
+
+const readDone = () => {
+  doneList.innerHTML = '';
+  items.forEach((item) => {
+    if (item.done) {
+      let li = document.createElement("li");
+    doneList.appendChild(li);
     li.setAttribute("id", `${item.id}`);
     if (item.done) {
       li.setAttribute("style", "color: green");
@@ -76,8 +107,9 @@ const read = () => {
     <button type="button" class="save" onclick="save(${item.id})" id="save-${item.id}">
       Save
     </button>`;
-  });
-};
+    }
+  })
+}
 
 // Function triggered when clicking 'done'.
 // Selects object in array based on id and changes their style property in DOM
@@ -89,6 +121,7 @@ const done = (idNum) => {
     doneItem[0].done = !doneItem[0].done;
   }
   read();
+  readDone();
 };
 
 const displaySave = (idNum) => {

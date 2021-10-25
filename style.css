@@ -3,10 +3,23 @@ body {
   /* width: 50%; */
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   font-family: "consolas";
   background-color: rgb(13, 17, 23);
   color: white;
+}
+
+body > * {
+  width: 30%;
+  text-align: center;
+  /* height: 400px; */
+  margin-bottom: 140px;
+}
+
+li {
+  list-style-type: none;
 }
 
 span {
