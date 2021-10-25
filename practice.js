@@ -29,15 +29,8 @@ const remove = (idNum) => {
   if (removedItem[0].id === idNum) {
     removedItem[0].deleted = !removedItem[0].deleted;
   }
-  items.forEach((item) => {
-    if (item.deleted) {
-      const li = document.getElementById(`${item.id}`);
-      li.style.display = "none";
-    } else {
-      const li = document.getElementById(`${item.id}`);
-      li.style.display = "";
-    }
-  });
+  read();
+  readDone();
 };
 
 const clearAll = () => {
@@ -45,13 +38,8 @@ const clearAll = () => {
     if (item.done) {
       item.deleted = true;
     }
-    if (item.deleted) {
-      const li = document.getElementById(`${item.id}`);
-      li.style.display = "none";
-    } else {
-      const li = document.getElementById(`${item.id}`);
-      li.style.display = "";
-    }
+    read();
+    readDone();
   });
 };
 
