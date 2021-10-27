@@ -1,8 +1,8 @@
-// List created following MVC and CRUD
-// M means Model, which is all the logic behind the application
-// V is view, which means basically what will be displayed in the screen
-// C is controller. This represents the functionality that the user sees
-// CRUD is for functions: Create, Read, Update, Delete
+- List created following MVC and CRUD
+- M means Model, which is all the logic behind the application
+- V is view, which means basically what will be displayed in the screen
+- C is controller. This represents the functionality that the user sees
+- CRUD is for functions: Create, Read, Update, Delete
 
 M - MODEL = is what changes the state of the data. It applies logic, stores data, and changes values. It is the middle factor between what the user sees and what the user does. It is the engine of our app.
 
