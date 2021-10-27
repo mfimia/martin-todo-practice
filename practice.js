@@ -6,6 +6,8 @@ const doneList = document.getElementById("done-list");
 const todoCounter = document.getElementById("todo-counter");
 const doneCounter = document.getElementById("done-counter");
 
+// Getting input from user, assigning it properties and pushing it to our 'items' array
+// When item is created, display all lists
 const create = () => {
   if (input.value) {
     listItem = {
@@ -25,6 +27,15 @@ const create = () => {
   readCounters();
 };
 
+// Event listeners to create items
+addButton.addEventListener("click", create);
+input.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    create();
+  }
+});
+
+// Ability to remove items from both lists. Executes action and displays all lists
 const remove = (idNum) => {
   const removedItem = items.filter((i) => {
     return i.id === idNum;
@@ -37,6 +48,7 @@ const remove = (idNum) => {
   readCounters();
 };
 
+// Remove all items that are done. Display all lists
 const clearAll = () => {
   items.forEach((item) => {
     if (item.done) {
@@ -48,6 +60,7 @@ const clearAll = () => {
   });
 };
 
+// Display items in list
 const read = () => {
   todoList.innerHTML = "";
   items.forEach((item) => {
@@ -72,6 +85,7 @@ const read = () => {
   });
 };
 
+// Function to display items that are completed
 const readDone = () => {
   doneList.innerHTML = "";
   items.forEach((item) => {
@@ -99,6 +113,7 @@ const readDone = () => {
   });
 };
 
+// Display item counters
 const readCounters = () => {
   todoCounter.innerHTML = "";
   doneCounter.innerHTML = "";
@@ -129,6 +144,7 @@ const done = (idNum) => {
   readCounters();
 };
 
+// Display saved button. User can click on textbox and edit it by clicking button or pressing enter
 const displaySave = (idNum) => {
   const textContainer = document.getElementById(`text-${idNum}`);
   const saveButton = document.getElementById(`save-${idNum}`);
@@ -162,6 +178,7 @@ const displaySave = (idNum) => {
   });
 };
 
+// Ability to save text
 const save = (text, idNum) => {
   const saveButton = document.getElementById(`save-${idNum}`);
   const deleteButton = document.getElementById(`delete-${idNum}`);
@@ -172,11 +189,3 @@ const save = (text, idNum) => {
   });
   savedItem[0].text = text;
 };
-
-// Add event listeners
-addButton.addEventListener("click", create);
-input.addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    create();
-  }
-});
