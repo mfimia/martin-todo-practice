@@ -34,3 +34,15 @@ span {
   background-color: grey;
   text-decoration: line-through;
 }
+
+#counters {
+  position: absolute;
+  left: 65%;
+  top: 15%;
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 150px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+}
