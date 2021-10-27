@@ -100,8 +100,8 @@ const readDone = () => {
 };
 
 const readCounters = () => {
-  todoCounter.innerHTML = "0";
-  doneCounter.innerHTML = "0";
+  todoCounter.innerHTML = "";
+  doneCounter.innerHTML = "";
   let todoItems = 0;
   let doneItems = 0;
   items.forEach((item) => {
