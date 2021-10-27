@@ -120,10 +120,8 @@ const readCounters = () => {
   let todoItems = 0;
   let doneItems = 0;
   items.forEach((item) => {
-    if (item.done) {
-      if (!item.deleted) doneItems++;
-    } else {
-      todoItems++;
+    if (!item.deleted) {
+      item.done ? doneItems++ : todoItems++;
     }
   });
   todoCounter.innerHTML = todoItems;
