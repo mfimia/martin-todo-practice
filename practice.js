@@ -3,6 +3,8 @@ const addButton = document.getElementById("add");
 const input = document.getElementById("input-text");
 const todoList = document.getElementById("to-do-list");
 const doneList = document.getElementById("done-list");
+const todoCounter = document.getElementById("todo-counter");
+const doneCounter = document.getElementById("done-counter");
 
 const create = () => {
   if (input.value) {
@@ -20,6 +22,7 @@ const create = () => {
   }
   read();
   readDone();
+  readCounters();
 };
 
 const remove = (idNum) => {
@@ -31,6 +34,7 @@ const remove = (idNum) => {
   }
   read();
   readDone();
+  readCounters();
 };
 
 const clearAll = () => {
@@ -40,6 +44,7 @@ const clearAll = () => {
     }
     read();
     readDone();
+    readCounters();
   });
 };
 
@@ -94,6 +99,22 @@ const readDone = () => {
   });
 };
 
+const readCounters = () => {
+  todoCounter.innerHTML = "0";
+  doneCounter.innerHTML = "0";
+  let todoItems = 0;
+  let doneItems = 0;
+  items.forEach((item) => {
+    if (item.done) {
+      if (!item.deleted) doneItems++;
+    } else {
+      todoItems++;
+    }
+  });
+  todoCounter.innerHTML = todoItems;
+  doneCounter.innerHTML = doneItems;
+};
+
 // Function triggered when clicking 'done'.
 // Selects object in array based on id and changes their style property in DOM
 const done = (idNum) => {
@@ -105,6 +126,7 @@ const done = (idNum) => {
   }
   read();
   readDone();
+  readCounters();
 };
 
 const displaySave = (idNum) => {
