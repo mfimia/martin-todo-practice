@@ -1,3 +1,4 @@
+// Declaring global variables
 const items = [];
 const addButton = document.getElementById("add");
 const input = document.getElementById("input-text");
