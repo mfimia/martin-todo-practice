@@ -1,13 +1,13 @@
 // Declaring global variables
-const items = [];
-const addButton = document.getElementById("add");
+const ITEMS = [];
+const ADDBUTTON = document.getElementById("add");
 const input = document.getElementById("input-text");
-const todoList = document.getElementById("to-do-list");
-const doneList = document.getElementById("done-list");
-const todoCounter = document.getElementById("todo-counter");
-const doneCounter = document.getElementById("done-counter");
+const TODOLIST = document.getElementById("to-do-list");
+const DONELIST = document.getElementById("done-list");
+const TODOCOUNTER = document.getElementById("todo-counter");
+const DONECOUNTER = document.getElementById("done-counter");
 
-// Getting input from user, assigning it properties and pushing it to our 'items' array
+// Getting input from user, assigning it properties and pushing it to our 'ITEMS' array
 // When item is created, display all lists
 const create = () => {
   if (input.value) {
@@ -18,7 +18,7 @@ const create = () => {
       deleted: false,
       editing: false,
     };
-    items.unshift(listItem);
+    ITEMS.unshift(listItem);
     input.value = "";
   } else {
     alert("Please write something!");
@@ -28,17 +28,17 @@ const create = () => {
   readCounters();
 };
 
-// Event listeners to create items
-addButton.addEventListener("click", create);
+// Event listeners to create ITEMS
+ADDBUTTON.addEventListener("click", create);
 input.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     create();
   }
 });
 
-// Ability to remove items from both lists. Executes action and displays all lists
+// Ability to remove ITEMS from both lists. Executes action and displays all lists
 const remove = (idNum) => {
-  const removedItem = items.filter((i) => {
+  const removedItem = ITEMS.filter((i) => {
     return i.id === idNum;
   });
   if (removedItem[0].id === idNum) {
@@ -49,9 +49,9 @@ const remove = (idNum) => {
   readCounters();
 };
 
-// Remove all items that are done. Display all lists
+// Remove all ITEMS that are done. Display all lists
 const clearAll = () => {
-  items.forEach((item) => {
+  ITEMS.forEach((item) => {
     if (item.done) {
       item.deleted = true;
     }
@@ -61,13 +61,13 @@ const clearAll = () => {
   });
 };
 
-// Display items in list
+// Display ITEMS in list
 const read = () => {
-  todoList.innerHTML = "";
-  items.forEach((item) => {
+  TODOLIST.innerHTML = "";
+  ITEMS.forEach((item) => {
     if (!item.done) {
       const li = document.createElement("li");
-      todoList.appendChild(li);
+      TODOLIST.appendChild(li);
       li.setAttribute("id", `${item.id}`);
       if (item.deleted) {
         li.setAttribute("style", "display: none");
@@ -86,13 +86,13 @@ const read = () => {
   });
 };
 
-// Function to display items that are completed
+// Function to display ITEMS that are completed
 const readDone = () => {
-  doneList.innerHTML = "";
-  items.forEach((item) => {
+  DONELIST.innerHTML = "";
+  ITEMS.forEach((item) => {
     if (item.done) {
       const li = document.createElement("li");
-      doneList.appendChild(li);
+      DONELIST.appendChild(li);
       li.setAttribute("id", `${item.id}`);
       if (item.done) {
         li.setAttribute("class", "done");
@@ -116,23 +116,23 @@ const readDone = () => {
 
 // Display item counters
 const readCounters = () => {
-  todoCounter.innerHTML = "";
-  doneCounter.innerHTML = "";
-  let todoItems = 0;
-  let doneItems = 0;
-  items.forEach((item) => {
+  TODOCOUNTER.innerHTML = "";
+  DONECOUNTER.innerHTML = "";
+  let todoITEMS = 0;
+  let doneITEMS = 0;
+  ITEMS.forEach((item) => {
     if (!item.deleted) {
-      item.done ? doneItems++ : todoItems++;
+      item.done ? doneITEMS++ : todoITEMS++;
     }
   });
-  todoCounter.innerHTML = todoItems;
-  doneCounter.innerHTML = doneItems;
+  TODOCOUNTER.innerHTML = todoITEMS;
+  DONECOUNTER.innerHTML = doneITEMS;
 };
 
 // Function triggered when clicking 'done'.
 // Selects object in array based on id and changes their style property in DOM
 const done = (idNum) => {
-  const doneItem = items.filter((i) => {
+  const doneItem = ITEMS.filter((i) => {
     return i.id === idNum;
   });
   if (doneItem[0].id === idNum) {
@@ -170,7 +170,7 @@ const displaySave = (idNum) => {
   textContainer.addEventListener("focusout", () => {
     saveButton.style.display = "none";
     deleteButton.style.display = "inline";
-    const originalText = items.filter((i) => {
+    const originalText = ITEMS.filter((i) => {
       return i.id === idNum;
     });
     textContainer.value = originalText[0].text;
@@ -183,7 +183,7 @@ const save = (text, idNum) => {
   const deleteButton = document.getElementById(`delete-${idNum}`);
   saveButton.style.display = "none";
   deleteButton.style.display = "inline";
-  const savedItem = items.filter((i) => {
+  const savedItem = ITEMS.filter((i) => {
     return i.id === idNum;
   });
   savedItem[0].text = text;
