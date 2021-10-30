@@ -1,3 +1,4 @@
+const LIST = []
 const INPUT = document.getElementById("input-text");
 const FORM = document.getElementById("form");
 FORM.addEventListener("submit", (e) => {
@@ -8,12 +9,14 @@ FORM.addEventListener("submit", (e) => {
 const create = () => {
   const item = {
     text: `${INPUT.value}`,
-    id: Math.floor(Math.random() * 1000000000)
+    id: Math.floor(Math.random() * 1000000000),
   };
-  localStorage.setItem(`${item.id}`, JSON.stringify(item));
-  const obj = JSON.parse(localStorage.getItem(`${item.id}`));
-//   localStorage.setItem()
-
+  LIST.unshift(item);
+  localStorage.setItem(`todo-list`, JSON.stringify(LIST));
+  // const obj = JSON.parse(localStorage.getItem(`${item.id}`));
+  INPUT.value = "";
+    console.log(JSON.parse(localStorage.getItem("todo-list")));
+  //   localStorage.setItem()
 };
 
 // localStorage.setItem('item', JSON.stringify(ITEM));
