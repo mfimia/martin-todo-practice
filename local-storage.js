@@ -6,14 +6,12 @@ FORM.addEventListener("submit", (e) => {
 });
 
 const create = () => {
-  const ITEM = {
+  const item = {
     text: `${INPUT.value}`,
     id: Math.floor(Math.random() * 1000000000)
   };
-  localStorage.setItem(`${ITEM.id}`, JSON.stringify(ITEM));
-  const preParse = localStorage.getItem(`${ITEM.id}`);
-  const parsed = JSON.parse(preParse);
-  console.log(parsed)
+  localStorage.setItem(`${item.id}`, JSON.stringify(item));
+  const obj = JSON.parse(localStorage.getItem(`${item.id}`));
 //   localStorage.setItem()
 
 };
