@@ -50,7 +50,9 @@ const read = () => {
     const li = document.createElement("li");
     const deleteButton = document.createElement("button");
     const span = document.createElement("span");
-    if (item.done) {span.setAttribute('class', 'checked')}
+    if (item.done) {
+      span.setAttribute("class", "checked");
+    }
     const doneButton = document.createElement("button");
     doneButton.innerHTML = "Done";
     doneButton.setAttribute("id", `done-${item.id}`);
@@ -100,7 +102,15 @@ const deleteAll = () => {
 };
 
 // TO-DO
-const clearDone = () => {};
+const clearDone = () => {
+  LIST = LIST.filter((item) => {
+    if (!item.done) {
+      return item;
+    }
+  });
+  localStorage.setItem(`todo-list`, JSON.stringify(LIST));
+  read();
+};
 
 // Loading previous session and reading list on initialization
 read();
