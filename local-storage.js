@@ -1,5 +1,4 @@
-let LIST = [];
-const STORED_ARRAY = [JSON.parse(localStorage.getItem("todo-list"))];
+let LIST = JSON.parse(localStorage.getItem("todo-list")) || [];
 const INPUT = document.getElementById("input-text");
 const FORM = document.getElementById("form");
 const TODO_LIST = document.getElementById("todo-list");
@@ -7,17 +6,6 @@ FORM.addEventListener("submit", (e) => {
   e.preventDefault();
   create();
 });
-
-// Loading the list from previous session by accessing all items of array nested in STORED_ARRAY
-const load = () => {
-  if (!LIST.length && STORED_ARRAY) {
-    STORED_ARRAY.forEach((item) => {
-      if (item) {
-        item.forEach((i) => LIST.push(i));
-      }
-    });
-  }
-};
 
 // Creating items and giving them properties. Calling load function if no previous values
 const create = () => {
@@ -43,7 +31,6 @@ const store = (item) => {
 
 // Displaying content on the screen. Making sure it is loaded from previous session first
 const read = () => {
-  load();
   TODO_LIST.innerHTML = "";
   // Function to iterate over list and create list items
   LIST.forEach((item) => {
@@ -101,7 +88,7 @@ const deleteAll = () => {
   }
 };
 
-// TO-DO
+// Clear all items that are marked as "done"
 const clearDone = () => {
   LIST = LIST.filter((item) => {
     if (!item.done) {
