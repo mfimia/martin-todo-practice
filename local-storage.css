@@ -1,3 +1,13 @@
 button {
-    display: inline-block;
+  display: inline-block;
+}
+
+#delete-all {
+  background-color: red;
+  color: white;
+}
+
+.checked {
+  color: grey;
+  text-decoration: line-through;
 }

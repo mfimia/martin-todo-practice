@@ -25,6 +25,7 @@ const create = () => {
     const item = {
       text: `${INPUT.value}`,
       id: Math.floor(Math.random() * 1000000000),
+      done: false,
     };
     store(item);
     INPUT.value = "";
@@ -48,12 +49,22 @@ const read = () => {
   LIST.forEach((item) => {
     const li = document.createElement("li");
     const deleteButton = document.createElement("button");
+    const span = document.createElement("span");
+    if (item.done) {span.setAttribute('class', 'checked')}
+    const doneButton = document.createElement("button");
+    doneButton.innerHTML = "Done";
+    doneButton.setAttribute("id", `done-${item.id}`);
+    doneButton.addEventListener("click", () => {
+      done(item.id);
+    });
+    span.innerHTML = item.text;
     deleteButton.innerHTML = "Delete";
-    deleteButton.setAttribute("id", `id-${item.id}`);
+    deleteButton.setAttribute("id", `delete-${item.id}`);
     deleteButton.addEventListener("click", () => {
       remove(item.id);
     });
-    li.innerHTML = item.text;
+    li.appendChild(doneButton);
+    li.appendChild(span);
     li.appendChild(deleteButton);
     TODO_LIST.appendChild(li);
   });
@@ -68,6 +79,16 @@ const remove = (id) => {
   read();
 };
 
+const done = (id) => {
+  LIST.forEach((item) => {
+    if (item.id === id) {
+      item.done = !item.done;
+    }
+  });
+  localStorage.setItem(`todo-list`, JSON.stringify(LIST));
+  read();
+};
+
 // Deleting all items by resetting list array. Asking user for confirmation
 const deleteAll = () => {
   if (LIST.length && confirm("Are you sure you want to delete all items")) {
@@ -77,6 +98,9 @@ const deleteAll = () => {
     read();
   }
 };
+
+// TO-DO
+const clearDone = () => {};
 
 // Loading previous session and reading list on initialization
 read();
