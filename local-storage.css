@@ -1,9 +1,21 @@
-button {
-  cursor: pointer;
+body, * {
+    color: white;
+    background-color: black;
+    font-family: 'consolas';
 }
 
-#submit {
-    cursor: pointer;
+button, #submit {
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  font-size: large;
+}
+
+#input-text {
+    line-height: 2;
+    text-indent: 4px;
 }
 
 #delete-all {
@@ -12,6 +24,23 @@ button {
 }
 
 .checked {
-  color: grey;
+  color: lightgreen;
   text-decoration: line-through;
+}
+
+span {
+    width: 250px!important;
+    display: inline-block;
+    text-indent: 5px;
+    border: 1px solid grey;
+    border-radius: 5px;
+
+}
+
+li {
+    list-style: none;
+}
+li > * {
+    padding: 4px;
+    margin: 2px 8px;
 }

@@ -42,14 +42,14 @@ const read = () => {
     }
     const doneButton = document.createElement("button");
     doneButton.innerHTML = "Done";
-    doneButton.setAttribute("id", `done-${item.id}`);
-    doneButton.addEventListener("click", () => {
+    doneButton.setAttribute("class", "done-button");
+    doneButton.addEventListener("mousedown", () => {
       done(item.id);
     });
     span.innerHTML = item.text;
     deleteButton.innerHTML = "Delete";
-    deleteButton.setAttribute("id", `delete-${item.id}`);
-    deleteButton.addEventListener("click", () => {
+    deleteButton.setAttribute("class", "delete-button");
+    deleteButton.addEventListener("mousedown", () => {
       remove(item.id);
     });
     li.appendChild(doneButton);
