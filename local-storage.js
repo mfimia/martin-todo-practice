@@ -93,7 +93,7 @@ const done = (id) => {
 
 // Deleting all items by resetting list array. Asking user for confirmation
 const deleteAll = () => {
-  if (LIST.length && confirm("Are you sure you want to delete all items")) {
+  if (LIST.length && confirm("Are you sure you want to delete all items?!")) {
     INPUT.value = "";
     LIST = [];
     localStorage.setItem(`todo-list`, JSON.stringify(LIST));
