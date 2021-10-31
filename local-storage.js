@@ -40,6 +40,7 @@ const read = () => {
     if (item.done) {
       span.setAttribute("class", "checked");
     }
+    span.setAttribute('contentEditable', 'true')
     const doneButton = document.createElement("button");
     doneButton.innerHTML = "Done";
     doneButton.setAttribute("class", "done-button");

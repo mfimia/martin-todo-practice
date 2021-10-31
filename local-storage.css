@@ -1,10 +1,12 @@
-body, * {
-    color: white;
-    background-color: black;
-    font-family: 'consolas';
+body,
+* {
+  color: white;
+  background-color: black;
+  font-family: "consolas";
 }
 
-button, #submit {
+button,
+#submit {
   cursor: pointer;
   border: 1px solid white;
   background-color: black;
@@ -14,8 +16,8 @@ button, #submit {
 }
 
 #input-text {
-    line-height: 2;
-    text-indent: 4px;
+  line-height: 2;
+  text-indent: 4px;
 }
 
 #delete-all {
@@ -29,18 +31,18 @@ button, #submit {
 }
 
 span {
-    width: 250px!important;
-    display: inline-block;
-    text-indent: 5px;
-    border: 1px solid grey;
-    border-radius: 5px;
-
+  width: 350px;
+  display: inline-block;
+  text-indent: 5px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  word-wrap: break-word;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 li > * {
-    padding: 4px;
-    margin: 2px 8px;
+  padding: 4px;
+  margin: 2px 8px;
 }
