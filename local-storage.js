@@ -7,26 +7,32 @@ FORM.addEventListener("submit", (e) => {
   create();
 });
 
+// Loading the list from previous session by accessing all items of array nested in STORED_ARRAY
 const loadList = () => {
-  STORED_ARRAY.forEach((item) => LIST.unshift(item));
+  STORED_ARRAY.forEach((item) => {
+    if (item) {
+      item.forEach((i) => LIST.unshift(i));
+    }
+  });
 };
 
 const create = () => {
-  if ((LIST.length = 0)) {
-    console.log("hi!");
+  if (!LIST.length && STORED_ARRAY) {
     loadList();
   }
   const item = {
     text: `${INPUT.value}`,
     id: Math.floor(Math.random() * 1000000000),
   };
-  LIST.unshift(item);
-
-  localStorage.setItem(`todo-list`, JSON.stringify(LIST));
-  // const obj = JSON.parse(localStorage.getItem(`${item.id}`));
+  store(item);
   INPUT.value = "";
+};
+
+// Saving the value in local array + local browser storage
+const store = (item) => {
+  LIST.unshift(item);
   console.log(LIST);
-  //   localStorage.setItem()
+  localStorage.setItem(`todo-list`, JSON.stringify(LIST));
 };
 
 // localStorage.setItem('item', JSON.stringify(ITEM));
